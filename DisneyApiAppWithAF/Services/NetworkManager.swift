@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error {
     case invalidURL
@@ -18,40 +19,37 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    func fetchData (from url: String?, with completion: @escaping(Disney) -> Void) {
-        guard let stringURL = url else { return }
-        guard let url = URL(string: stringURL) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print (error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let hero = try JSONDecoder().decode(Disney.self, from: data)
-                DispatchQueue.main.async {
-                    completion(hero)
+    
+    func fetchData (_ url: String, completion: @escaping(Result<Disney, NetworkError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let disney = Disney.getDisney(from: value)
+                    DispatchQueue.main.async {
+                        completion(.success(disney))
+                    }
+                case .failure:
+                    completion(.failure(.decodingError))
                 }
             }
-            
-            catch let error {
-                print (error)
-            }
-        } .resume()
     }
 }
         
+
+
 class ImageManager {
-    
+
     static let shared = ImageManager()
     private init() {}
-    
+
     func fetchImage(from url: String?) -> Data? {
         guard let stringURL = url else { return nil }
         guard let imageURL = URL(string: stringURL) else { return nil }
         return try? Data(contentsOf: imageURL)
-        
+
     }
-    
+
 }
+

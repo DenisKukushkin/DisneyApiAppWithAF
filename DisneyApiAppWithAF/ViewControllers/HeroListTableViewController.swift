@@ -7,12 +7,13 @@
 
 import UIKit
 
+
 class HeroListTableViewController: UITableViewController {
 
     @IBAction func upadtaData(_ sender: UIBarButtonItem) {
         sender.tag == 1
-        ? fetchData(from: disney?.nextPage)
-        : fetchData(from: disney?.previousPage)
+        ? fetchData(from: disney!.nextPage)
+        : fetchData(from: disney!.previousPage ?? "")
         
     }
     
@@ -49,10 +50,15 @@ class HeroListTableViewController: UITableViewController {
         
     }
     
-    private func fetchData(from url: String?) {
-        NetworkManager.shared.fetchData(from: url) { disney in
-            self.disney = disney
-            self.tableView.reloadData()
+    private func fetchData(from url: String) {
+        NetworkManager.shared.fetchData(url) { result in
+            switch result {
+            case .success(let disney):
+                self.disney = disney
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 

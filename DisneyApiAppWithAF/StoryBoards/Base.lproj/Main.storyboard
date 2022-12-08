@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7WV-nh-CJk">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,13 +12,13 @@
         <!--Disney Heroes-->
         <scene sceneID="6Mv-aj-WVj">
             <objects>
-                <tableViewController id="t86-QX-YY5" customClass="HeroListTableViewController" customModule="DisneyApiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="t86-QX-YY5" customClass="HeroListTableViewController" customModule="DisneyApiAppWithAF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="EPC-QM-KEQ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="dOM-Dd-Omp" customClass="TableViewCell" customModule="DisneyApiApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="dOM-Dd-Omp" customClass="TableViewCell" customModule="DisneyApiAppWithAF" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dOM-Dd-Omp" id="M3Y-lf-nqR">
@@ -61,12 +62,12 @@
                     <navigationItem key="navigationItem" title="Disney Heroes" id="nRB-1A-dkI">
                         <barButtonItem key="leftBarButtonItem" title="prev" id="OFu-UH-mRo">
                             <connections>
-                                <action selector="upadtaData:" destination="t86-QX-YY5" id="zph-5Y-a1C"/>
+                                <action selector="upadtaData:" destination="t86-QX-YY5" id="kU5-nV-mLH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="1" title="next" id="W9W-l1-QOO">
                             <connections>
-                                <action selector="upadtaData:" destination="t86-QX-YY5" id="s14-fc-EHQ"/>
+                                <action selector="upadtaData:" destination="t86-QX-YY5" id="6j3-v9-Cx2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -95,7 +96,7 @@
         <!--Hero Details View Controller-->
         <scene sceneID="GQU-8K-VxV">
             <objects>
-                <viewController id="eOn-Oc-az1" customClass="HeroDetailsViewController" customModule="DisneyApiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eOn-Oc-az1" customClass="HeroDetailsViewController" customModule="DisneyApiAppWithAF" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TeB-7t-WKk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
