@@ -13,6 +13,11 @@
 		79DD503A2941E692002CEF64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DD50382941E692002CEF64 /* Main.storyboard */; };
 		79DD503C2941E692002CEF64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79DD503B2941E692002CEF64 /* Assets.xcassets */; };
 		79DD503F2941E692002CEF64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79DD503D2941E692002CEF64 /* LaunchScreen.storyboard */; };
+		79DD50472941E9F9002CEF64 /* DisneyHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50462941E9F9002CEF64 /* DisneyHero.swift */; };
+		79DD50492941EA28002CEF64 /* HeroListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD50482941EA28002CEF64 /* HeroListTableViewController.swift */; };
+		79DD504B2941EA52002CEF64 /* HeroDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD504A2941EA52002CEF64 /* HeroDetailsViewController.swift */; };
+		79DD504D2941EA77002CEF64 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD504C2941EA77002CEF64 /* TableViewCell.swift */; };
+		79DD504F2941EA8F002CEF64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DD504E2941EA8F002CEF64 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		79DD503B2941E692002CEF64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		79DD503E2941E692002CEF64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79DD50402941E692002CEF64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79DD50462941E9F9002CEF64 /* DisneyHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisneyHero.swift; sourceTree = "<group>"; };
+		79DD50482941EA28002CEF64 /* HeroListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListTableViewController.swift; sourceTree = "<group>"; };
+		79DD504A2941EA52002CEF64 /* HeroDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsViewController.swift; sourceTree = "<group>"; };
+		79DD504C2941EA77002CEF64 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		79DD504E2941EA8F002CEF64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,11 @@
 				79DD503B2941E692002CEF64 /* Assets.xcassets */,
 				79DD503D2941E692002CEF64 /* LaunchScreen.storyboard */,
 				79DD50402941E692002CEF64 /* Info.plist */,
+				79DD50462941E9F9002CEF64 /* DisneyHero.swift */,
+				79DD50482941EA28002CEF64 /* HeroListTableViewController.swift */,
+				79DD504A2941EA52002CEF64 /* HeroDetailsViewController.swift */,
+				79DD504C2941EA77002CEF64 /* TableViewCell.swift */,
+				79DD504E2941EA8F002CEF64 /* NetworkManager.swift */,
 			);
 			path = DisneyApiAppWithAF;
 			sourceTree = "<group>";
@@ -138,9 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DD50492941EA28002CEF64 /* HeroListTableViewController.swift in Sources */,
 				79DD50372941E692002CEF64 /* ViewController.swift in Sources */,
+				79DD50472941E9F9002CEF64 /* DisneyHero.swift in Sources */,
 				79DD50332941E692002CEF64 /* AppDelegate.swift in Sources */,
+				79DD504F2941EA8F002CEF64 /* NetworkManager.swift in Sources */,
 				79DD50352941E692002CEF64 /* SceneDelegate.swift in Sources */,
+				79DD504D2941EA77002CEF64 /* TableViewCell.swift in Sources */,
+				79DD504B2941EA52002CEF64 /* HeroDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +321,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = DenisKukushkin.DisneyApiAppWithAF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -328,9 +351,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = DenisKukushkin.DisneyApiAppWithAF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
