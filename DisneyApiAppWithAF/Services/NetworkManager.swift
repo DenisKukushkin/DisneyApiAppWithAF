@@ -20,7 +20,7 @@ class NetworkManager {
     private init() {}
     
     
-    func fetchData (_ url: String, completion: @escaping(Result<Disney, NetworkError>) -> Void) {
+    func fetchData (from url: String, completion: @escaping(Result<Disney, NetworkError>) -> Void) {
         AF.request(url)
             .validate()
             .responseJSON { dataResponse in
@@ -31,25 +31,28 @@ class NetworkManager {
                         completion(.success(disney))
                     }
                 case .failure:
-                    completion(.failure(.decodingError))
+                    completion(.failure(.noData))
                 }
             }
     }
 }
-        
-
-
+     
 class ImageManager {
-
+    
     static let shared = ImageManager()
     private init() {}
-
-    func fetchImage(from url: String?) -> Data? {
-        guard let stringURL = url else { return nil }
-        guard let imageURL = URL(string: stringURL) else { return nil }
-        return try? Data(contentsOf: imageURL)
-
+    
+    func fetchImage(from url: String, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseData { dataResponse in
+                switch dataResponse.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure:
+                    completion(.failure(.noData))
+                }
+            }
     }
-
 }
 

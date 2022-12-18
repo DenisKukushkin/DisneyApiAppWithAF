@@ -8,7 +8,7 @@
 import UIKit
 
 class HeroDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var heroDescriptionLabel: UILabel!
     @IBOutlet weak var heroImageView: UIImageView! {
         didSet {
@@ -27,27 +27,34 @@ class HeroDetailsViewController: UIViewController {
         title = disneyHero.name
         heroImageView.backgroundColor = .gray
         DispatchQueue.global().async {
-            guard let imageData = ImageManager.shared.fetchImage(from: self.disneyHero.imageUrl) else { return }
-            DispatchQueue.main.async {
-                self.heroImageView.image = UIImage (data: imageData)
-                self.spinnerView.stopAnimating()
+
+            guard let imageURL = self.disneyHero.imageUrl else { return }
+            
+            ImageManager.shared.fetchImage(from: imageURL) { result in
+                switch result {
+                case .success(let imageData):
+                    DispatchQueue.main.async {
+                        self.heroImageView.image = UIImage (data: imageData)
+                        self.spinnerView.stopAnimating()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
             }
-        
         }
         
-    }
-    
-    private func showSpinner(in view: UIView) {
-        spinnerView = UIActivityIndicatorView (style: .large)
-        spinnerView.color = .white
-        spinnerView.startAnimating()
-        spinnerView.center = heroImageView.center
-        spinnerView.hidesWhenStopped = true
+        func showSpinner(in view: UIView) {
+            spinnerView = UIActivityIndicatorView (style: .large)
+            spinnerView.color = .white
+            spinnerView.startAnimating()
+            spinnerView.center = heroImageView.center
+            spinnerView.hidesWhenStopped = true
+            
+            view.addSubview(spinnerView)
+            
+        }
         
-        view.addSubview(spinnerView)
         
+
     }
-
-    
-
 }

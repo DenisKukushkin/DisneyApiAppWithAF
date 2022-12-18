@@ -22,14 +22,15 @@ class TableViewCell: UITableViewCell {
     
     func configure(with disneyHero: DisneyHero?) {
         heroNameLabel.text = disneyHero?.name
-        DispatchQueue.global().async {
-            guard let stringURL = disneyHero?.imageUrl else { return }
-            guard let imageURL = URL(string: stringURL) else { return }
-            guard let imageData = try? Data (contentsOf: imageURL) else { return }
-            DispatchQueue.main.async {
+        guard let imageURL = disneyHero?.imageUrl else { return }
+        ImageManager.shared.fetchImage(from: imageURL) { result in
+            switch result {
+            case .success(let imageData):
                 self.heroImageView.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+                
             }
-            
         }
     }
 }

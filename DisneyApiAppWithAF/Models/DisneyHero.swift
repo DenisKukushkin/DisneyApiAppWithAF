@@ -6,19 +6,19 @@
 //
 
 struct Disney: Decodable {
-    let data: [DisneyHero]
-    let count: Int
-    let totalPages: Int
-    let nextPage: String
+    let data: [DisneyHero]?
+    let count: Int?
+    let totalPages: Int?
+    let nextPage: String?
     let previousPage: String?
     
     init(disney: [String: Any]) {
-        let disneyHeroes = disney["data"] as! [[String: Any]]
-        data = DisneyHero.getDisneyHeroes(from: disneyHeroes)
-        count = disney["count"] as! Int
-        totalPages = disney["totalPages"] as! Int
-        nextPage = disney["nextPage"] as! String
-        previousPage = disney["previousPage"] as? String ?? ""
+        let disneyHeroes = disney["data"] as? [[String: Any]]
+        data = DisneyHero.getDisneyHeroes(from: disneyHeroes ?? [["": ""]])
+        count = disney["count"] as? Int
+        totalPages = disney["totalPages"] as? Int
+        nextPage = disney["nextPage"] as? String
+        previousPage = disney["previousPage"] as? String
     }
     
     static func getDisney(from value: Any) -> Disney {
